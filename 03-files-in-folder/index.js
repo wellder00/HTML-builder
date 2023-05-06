@@ -15,10 +15,10 @@ fs.readdir( folder, {withFileTypes: true}, (err, files) => {
           if (err) {
             console.log(err);
           } else {
-            const extenthion = path.extname(file.name)
-            const fileName = path.basename(file.name, extenthion)
+            const extension = path.extname(file.name)
+            const fileName = path.basename(file.name, extension)
             const fileSize = stats.size / 1024
-            console.log(fileName,  extenthion.substring(1),  fileSize.toFixed(3)+'Kb')
+            console.log(`${fileName} - ${extension.substring(1)} - ${fileSize.toFixed(3)}Kb`)
           }
         })
       }
