@@ -5,8 +5,8 @@ const folderFilesCopy = path.join(__dirname, 'files-copy');
 async function createFolderAndCopyFiles() {
   try {
     try {
-      await fs.rmdir(folderFilesCopy, { recursive: true });
-      console.log('Папка удалили');
+      await fs.rm(folderFilesCopy, { recursive: true, force: true });
+      console.log('Папку удалили');
     } catch (err) {
       if (err.code === 'ENOENT') {
         console.log('Папка нет');
@@ -14,7 +14,7 @@ async function createFolderAndCopyFiles() {
         throw err;
       }
     }
-    await fs.mkdir(folderFilesCopy, { recursive: true });
+    await fs.mkdir(folderFilesCopy, { recursive: true, force: true });
     console.log('Папку создали');
     const files = await fs.readdir(path.join(__dirname, 'files'));
     for (const file of files) {
